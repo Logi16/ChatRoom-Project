@@ -41,7 +41,7 @@ class user():
 class Server():
     def __init__(self):
         self.SERVER=socket.gethostbyname(socket.gethostname()) 
-        self.SERVER='localhost'
+        #self.SERVER='localhost'
         self.PORT=5050
         self.HEADER=64
         self.PATH=dirname(abspath(__file__))
