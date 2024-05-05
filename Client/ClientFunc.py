@@ -1,4 +1,4 @@
-from socket import socket as socket
+from socket import socket
 from traceback import print_exc
 
 def socketConnect(username,ip):
@@ -12,6 +12,7 @@ def socketConnect(username,ip):
         else:
             return (sock,colour)
     except:
+        #print_exc()
         return False
 
 def sendUsername(sock,username):
@@ -19,9 +20,9 @@ def sendUsername(sock,username):
     try:
         send(username,sock)
         amount=int(sock.recv(64).decode())
-        print(amount)
+        #print(amount)
         response=sock.recv(amount).decode()
-        print(response)
+        #print(response)
         if response == "Username Taken":
             sock.close()
             return False
@@ -30,9 +31,9 @@ def sendUsername(sock,username):
                 amount2=int(sock.recv(64).decode())
             except:
                 print_exc()
-            print(amount2)
+            #print(amount2)
             colour=str(sock.recv(amount2).decode())
-            print(colour)
+            #print(colour)
             return colour
     except:
         print_exc()
@@ -50,5 +51,5 @@ def recieving(sock,q):
     while True:
         amount=int(sock.recv(64).decode())
         msg=str(sock.recv(amount).decode())
-        print(msg)
+        #print(msg)
         q.put(msg)
